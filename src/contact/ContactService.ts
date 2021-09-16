@@ -27,7 +27,7 @@ export const sendMail = (req: IEmail) => {
       req.Description,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
+  transporter.sendMail(mailOptions, (error: any, info: any) => {
     if (error) {
       logger.info(`Error in Contact Service: ${error}`);
     } else {
