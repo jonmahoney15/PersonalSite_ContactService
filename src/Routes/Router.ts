@@ -4,10 +4,10 @@ import { auth, rateLimiter } from "../Middleware";
 
 const router = Router();
 
-router.get("/contact/Contact", auth, (req: Request, res: Response) =>
+router.get("/contact/health", auth, (req: Request, res: Response) =>
   res.status(200).json({ Status: "Success", message: "Contact is Healthy" })
 );
 
-router.post("/contact", auth, rateLimiter, SendEmail);
+router.post("/contact/contact", auth, rateLimiter, SendEmail);
 
 export { router as Router };
