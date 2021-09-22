@@ -4,7 +4,7 @@ import { loadConfig } from "./util/load-config";
 
 export interface Env {
   NODE_ENV: "development" | "test" | "production";
-  PORT: number;
+  PORT_NUM: number;
   FROM_EMAIL: string;
   PASSWORD: string;
   TO_EMAIL: string;
@@ -18,7 +18,7 @@ const schema = Joi.object()
     NODE_ENV: Joi.string()
       .valid("development", "test", "production")
       .default("development"),
-    PORT: Joi.number().port().default(3000),
+    PORT_NUM: Joi.number().port().default(3000),
     FROM_EMAIL: Joi.string().email(),
     TO_EMAIL: Joi.string().email(),
     PASSWORD: Joi.string().regex(/^[a-zA-Z0-9_!@./#&+-]{3,30}$/),
@@ -32,7 +32,7 @@ const env = loadConfig(schema);
 
 export const config = {
   env: env.NODE_ENV,
-  port: env.PORT,
+  port: env.PORT_NUM,
   from_email: env.FROM_EMAIL,
   to_email: env.TO_EMAIL,
   password: env.PASSWORD,
