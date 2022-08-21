@@ -2,6 +2,7 @@ import mailer from "nodemailer";
 import { IEmail } from "./ContactTypes";
 import { logger } from "../util/logger";
 import { config } from '../config';
+
 const transporter = mailer.createTransport({
   service: "gmail",
   auth: {
@@ -35,3 +36,4 @@ export const sendMail = (req: IEmail) => {
     }
   });
 };
+
